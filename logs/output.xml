@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.10.9 on darwin)" generated="20230311 08:42:56.835" rpa="false" schemaversion="3">
+<suite id="s1" name="Post" source="/Users/higorjesus/RobotApi/buger-eats-partner-tests/post.robot">
+<test id="s1-t1" name="Should create a new partner" line="15">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>name=Higor Torres</arg>
+<arg>email=contato@papito.com.br</arg>
+<arg>whatsapp=11999999999</arg>
+<arg>business=Restaurante</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230311 08:42:56.874" level="INFO">${payload} = {'name': 'Higor Torres', 'email': 'contato@papito.com.br', 'whatsapp': '11999999999', 'business': 'Restaurante'}</msg>
+<status status="PASS" starttime="20230311 08:42:56.874" endtime="20230311 08:42:56.874"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>auth_user=qa</arg>
+<arg>auth_password=ninja</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230311 08:42:56.875" level="INFO">${headers} = {'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja'}</msg>
+<status status="PASS" starttime="20230311 08:42:56.874" endtime="20230311 08:42:56.875"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${filter}</var>
+<arg>name=Higor Torres</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230311 08:42:56.875" level="INFO">${filter} = {'name': 'Higor Torres'}</msg>
+<status status="PASS" starttime="20230311 08:42:56.875" endtime="20230311 08:42:56.875"/>
+</kw>
+<kw name="DeleteOne">
+<arg>${MONGODB_URI}</arg>
+<arg>${filter}</arg>
+<msg timestamp="20230311 08:42:56.875" level="FAIL">No keyword with name 'DeleteOne' found. Did you mean:
+    RequestsLibrary.DELETE</msg>
+<status status="FAIL" starttime="20230311 08:42:56.875" endtime="20230311 08:42:56.875"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<status status="NOT RUN" starttime="20230311 08:42:56.875" endtime="20230311 08:42:56.876"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>201</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" starttime="20230311 08:42:56.876" endtime="20230311 08:42:56.876"/>
+</kw>
+<status status="FAIL" starttime="20230311 08:42:56.874" endtime="20230311 08:42:56.876">No keyword with name 'DeleteOne' found. Did you mean:
+    RequestsLibrary.DELETE</status>
+</test>
+<doc>POST /partners</doc>
+<status status="FAIL" starttime="20230311 08:42:56.836" endtime="20230311 08:42:56.876"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Post">Post</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230311 08:42:56.874" level="ERROR">Error in file '/Users/higorjesus/RobotApi/buger-eats-partner-tests/post.robot' on line 6: Importing library 'RoobotMongoDBLibrary.Delete' failed: ModuleNotFoundError: No module named 'RoobotMongoDBLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /opt/homebrew/bin
+  /opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python310.zip
+  /opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10
+  /opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload
+  /opt/homebrew/lib/python3.10/site-packages</msg>
+</errors>
+</robot>
